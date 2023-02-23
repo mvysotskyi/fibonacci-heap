@@ -15,6 +15,9 @@ class FibonacciHeap:
         Node class for the Fibonacci heap.
         """
         def __init__(self, key) -> None:
+            """
+            Initialize the node.
+            """
             self.key = key
             self.parent = None
             self.child = None
@@ -24,6 +27,9 @@ class FibonacciHeap:
             self.mark = False
 
         def __repr__(self) -> str:
+            """
+            Return a string representation of the node.
+            """
             return str(self.key)
 
         def siblings(self) -> List[Any]:
@@ -34,10 +40,10 @@ class FibonacciHeap:
                 return [self]
             else:
                 sibs = [self.left]
-                x = self.left
-                while x != self:
-                    sibs.append(x.left)
-                    x = x.left
+                current = self.left
+                while current != self:
+                    sibs.append(current.left)
+                    current = current.left
                 return sibs
 
         def add(self, node) -> None:
